@@ -1,0 +1,22 @@
+Top priority:
+error handeling
+locking routes based on login
+logout button  -  works, needs CSS when i do CSS for links
+
+
+Priority 2:
+Predictions page
+/get Predictions
+
+
+Priority 3:
+forgot password
+
+
+priority 4: 
+make frontend work on mobile
+
+
+priority 5: 
+/heatlh 
+
