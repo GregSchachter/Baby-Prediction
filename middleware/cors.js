@@ -1,7 +1,9 @@
 const cors = require("cors");
+require("dotenv").config();
+const frontEndlink = process.env.FRONTEND_URL;
 
 var corsOptions = {
-  origin: ["http://localhost:5173", "127.0.0.1.5173"],
+  origin: [frontEndlink],
   allowedHeaders: ["Content-Type", "Authorization"],
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
