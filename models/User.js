@@ -20,11 +20,22 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  resetTokenHash: {
+    type: String,
+  },
+  resetTokenExpire: {
+    type: Date,
+  },
+  hasPredicted: {
+    type: Boolean,
+  },
 });
 
 userSchema.pre("save", async function () {
-  const salt = await bcrypt.genSalt();
-  this.password = await bcrypt.hash(this.password, salt);
+  if (this.isModified("password")) {
+    const salt = await bcrypt.genSalt();
+    this.password = await bcrypt.hash(this.password, salt);
+  }
 });
 
 userSchema.statics.login = async function (email, password) {
@@ -37,6 +48,17 @@ userSchema.statics.login = async function (email, password) {
     throw Error("Incorrect email or password");
   }
   throw Error("Incorrect email or password");
+};
+
+userSchema.statics.passReset = async function (email, code) {
+  const salt = await bcrypt.genSalt();
+  const hashedCode = await bcrypt.hash(code, salt);
+  const expireDate = new Date(Date.now() + 15 * 60 * 1000);
+  const user = await this.findOneAndUpdate(
+    { email },
+    { resetTokenHash: hashedCode, resetTokenExpire: expireDate },
+  );
+  return user;
 };
 
 const User = mongoose.model("user", userSchema);

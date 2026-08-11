@@ -64,3 +64,26 @@
 #loginForm button:active {
   transform: scale(0.97);
 }
+
+@media (max-width: 600px) {
+  #loginForm {
+    width: calc(100% - 40px);
+    box-sizing: border-box;
+    margin: 20% auto;
+    padding: 20px;
+  }
+
+  #loginForm label {
+    font-size: 1.3rem;
+  }
+
+  #loginForm input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #loginForm button {
+    width: 90%;
+    font-size: 18px;
+  }
+}

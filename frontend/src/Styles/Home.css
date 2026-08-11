@@ -1,0 +1,79 @@
+#homePage {
+  color: white;
+  text-align: center;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+#homePage > h1 {
+  font-size: 42px;
+  margin-bottom: 50px;
+}
+
+/* Sections */
+
+#homePage > div {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+
+  padding: 25px 35px;
+  margin-bottom: 25px;
+
+  text-align: left;
+}
+
+#homePage > div h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Lists */
+
+#homePage ul,
+#homePage ol {
+  margin: 0;
+  padding-left: 30px;
+}
+
+#homePage li {
+  padding: 8px 0;
+  font-size: 18px;
+}
+
+/* Numbered list */
+
+#homePage ol li::marker {
+  font-weight: bold;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  #homePage {
+    margin: 40px auto;
+    padding: 15px;
+  }
+
+  #homePage > h1 {
+    font-size: 32px;
+    margin-bottom: 35px;
+  }
+
+  #homePage > div {
+    padding: 20px;
+  }
+
+  #homePage > div h2 {
+    font-size: 21px;
+  }
+
+  #homePage li {
+    font-size: 16px;
+  }
+}

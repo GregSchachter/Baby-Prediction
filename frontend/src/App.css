@@ -6,11 +6,37 @@ html {
     rgba(255, 54, 191, 1) 100%
   );
   font-family: Arial, Helvetica, sans-serif;
+  color: white;
 }
 
 a {
   font-weight: 600;
   color: white;
-  padding: 6px;
+  padding: 6px 10px;
   text-decoration: none;
+  border-radius: 6px;
+  transition: 0.2s ease;
+}
+
+a:active,
+#logoutButton:active {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+#logoutButton {
+  font-weight: 600;
+  color: white;
+  padding: 6px 10px;
+  background: none;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.2s ease;
+}
+
+a:hover,
+#logoutButton:hover {
+  background: rgba(255, 255, 255, 0.15);
 }

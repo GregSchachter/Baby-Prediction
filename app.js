@@ -9,11 +9,12 @@ const app = express();
 app.use(corsMiddleware);
 app.use(express.json());
 app.use(cookieParser());
-app.use(routes);
 
-app.get("/", (req, res) => {
-  res.send("Testing");
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
 });
+
+app.use(routes);
 
 const startServer = async () => {
   try {

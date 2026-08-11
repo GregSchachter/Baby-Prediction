@@ -19,10 +19,14 @@ const predictionSchema = new Schema({
     type: Number,
     required: true,
   },
-  weight: {
+  pounds: {
     type: Number,
     required: true,
   },
+  ounces: {
+    type: Number,
+    required: true,
+  }
 });
 
 const Prediction = mongoose.model("prediction", predictionSchema);
