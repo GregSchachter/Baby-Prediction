@@ -24,7 +24,11 @@ const handleErrors = (err) => {
 
 // Get Requests
 module.exports.logout_get = async (req, res) => {
-  res.cookie("jwt", "", { maxAge: 1 });
+  res.clearCookie("jwt", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
   res.status(200).json({ message: "Logged Out" });
 };
 
