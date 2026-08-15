@@ -11,24 +11,20 @@ function App() {
     hasPredicted: false,
   });
 
-  const url = import.meta.env.VITE_API_URL;
-
   useEffect(() => {
     const checkServerAndAuth = async () => {
       try {
         // Wake up the server first
-        await axios.get(`${url}/health`, {
+        await axios.get("/health", {
           timeout: 30000,
         });
 
         console.log("Server is awake");
 
         // Then check authentication
-        const res = await axios.get(`${url}/me`, {
+        const res = await axios.get("/me", {
           withCredentials: true,
         });
-
-        console.log(res.data);
 
         setAuthInfo({
           auth: res.data.auth,
@@ -47,7 +43,7 @@ function App() {
     };
 
     checkServerAndAuth();
-  }, [url]);
+  }, []);
   const contextValue = { authInfo, setAuthInfo };
 
   return (

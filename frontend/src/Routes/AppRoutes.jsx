@@ -14,9 +14,9 @@ import ResetPassword from "../Pages/ResetPassword";
 
 export default function AppRoutes() {
   const { authInfo, setAuthInfo } = useContext(authContext);
-  const url = import.meta.env.VITE_API_URL;
+
   const handleClick = async () => {
-    const res = await axios.get(`${url}/logout`, {
+    const res = await axios.get("/logout", {
       withCredentials: true,
     });
     setAuthInfo({

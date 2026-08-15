@@ -3,6 +3,7 @@ const routes = require("./routes/Routes");
 const cookieParser = require("cookie-parser");
 const connectToDb = require("./db");
 const corsMiddleware = require("./middleware/cors");
+const path = require("path");
 
 const app = express();
 
@@ -24,10 +25,16 @@ app.get("/health", (req, res) => {
 
 app.use(routes);
 
+app.use(express.static(path.join(__dirname, "frontend/dist")));
+
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend/dist/index.html"));
+});
+
 const startServer = async () => {
   try {
     await connectToDb();
-    app.listen(3000);
+    app.listen(process.env.PORT || 3000);
   } catch (error) {
     console.log(error);
   }

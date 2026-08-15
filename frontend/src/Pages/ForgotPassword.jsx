@@ -11,7 +11,6 @@ export default function ForgotPassword() {
     setEmail(e.target.value);
   };
 
-  const url = import.meta.env.VITE_API_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
@@ -19,7 +18,7 @@ export default function ForgotPassword() {
     try {
       // Send backend response
       const res = await axios.post(
-        `${url}/forgotpassword`,
+        "/forgotpassword",
         { email },
         {
           withCredentials: true,

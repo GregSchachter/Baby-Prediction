@@ -26,7 +26,6 @@ const SignupPage = () => {
     }));
   };
 
-  const url = import.meta.env.VITE_API_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     const signupData = {
@@ -36,7 +35,7 @@ const SignupPage = () => {
       lastName: info.lastName,
     };
     try {
-      const res = await axios.post(`${url}/signup`, signupData, {
+      const res = await axios.post("/signup", signupData, {
         withCredentials: true,
         timeout: 120000,
       });
@@ -62,32 +61,28 @@ const SignupPage = () => {
           name="firstName"
           placeholder="First Name"
           value={info.firstName}
-          onChange={handleChange}
-        ></input>
+          onChange={handleChange}></input>
         <label htmlFor="lastName">Last Name:</label>
         <input
           type="text"
           name="lastName"
           placeholder="Last Name"
           value={info.lastName}
-          onChange={handleChange}
-        ></input>
+          onChange={handleChange}></input>
         <label htmlFor="email">Email:</label>
         <input
           type="email"
           name="email"
           placeholder="Email"
           value={info.email}
-          onChange={handleChange}
-        ></input>
+          onChange={handleChange}></input>
         <label htmlFor="password">Password:</label>
         <input
           type="password"
           name="password"
           placeholder="Password"
           value={info.password}
-          onChange={handleChange}
-        ></input>
+          onChange={handleChange}></input>
         <button>Submit</button>
         <div id="loginError">{valid ? null : <p>{err}</p>}</div>
       </form>

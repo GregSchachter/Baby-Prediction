@@ -28,12 +28,11 @@ export default function PredictPage() {
     }));
   };
 
-  const url = import.meta.env.VITE_API_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `${url}/predict`,
+        "/predict",
         {
           gender: prediction.gender,
           date: prediction.date,
@@ -61,7 +60,7 @@ export default function PredictPage() {
     e.preventDefault();
     try {
       const res = await axios.patch(
-        `${url}/predict`,
+        "/predict",
         {
           gender: prediction.gender,
           date: prediction.date,
@@ -86,8 +85,7 @@ export default function PredictPage() {
         <div className="radioGroup">
           <label
             className={`radioLabel ${prediction.gender === "male" ? "maleSelected" : ""}
-          }`}
-          >
+          }`}>
             Male
             <input
               className="predRadio"
@@ -96,13 +94,11 @@ export default function PredictPage() {
               name="gender"
               value="male"
               checked={prediction.gender === "male"}
-              onChange={handleChange}
-            ></input>
+              onChange={handleChange}></input>
           </label>
           <label
             className={`radioLabel ${prediction.gender === "female" ? "femaleSelected" : ""}
-          }`}
-          >
+          }`}>
             Female
             <input
               className="predRadio"
@@ -111,8 +107,7 @@ export default function PredictPage() {
               name="gender"
               value="female"
               checked={prediction.gender === "female"}
-              onChange={handleChange}
-            ></input>
+              onChange={handleChange}></input>
           </label>
         </div>
         <div id="predInputs">
@@ -124,8 +119,7 @@ export default function PredictPage() {
               id="dateInput"
               placeholder="Due Date"
               value={prediction.date}
-              onChange={handleChange}
-            ></input>
+              onChange={handleChange}></input>
           </label>
           <label>
             Height (in)
@@ -136,8 +130,7 @@ export default function PredictPage() {
               name="height"
               value={prediction.height}
               onChange={handleChange}
-              min={1}
-            ></input>
+              min={1}></input>
           </label>
           <label>
             Weight (lbs)
@@ -149,8 +142,7 @@ export default function PredictPage() {
                 id="weightLbsInput"
                 value={prediction.pounds}
                 onChange={handleChange}
-                min={1}
-              ></input>
+                min={1}></input>
               <input
                 type="number"
                 placeholder="Oz"
@@ -159,8 +151,7 @@ export default function PredictPage() {
                 value={prediction.ounces}
                 onChange={handleChange}
                 min={0}
-                max={15}
-              ></input>
+                max={15}></input>
             </div>
           </label>
         </div>

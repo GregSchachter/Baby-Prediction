@@ -27,7 +27,8 @@ module.exports.logout_get = async (req, res) => {
   res.clearCookie("jwt", {
     httpOnly: true,
     secure: true,
-    sameSite: "none",
+    sameSite: "lax",
+    path: "/",
   });
   res.status(200).json({ message: "Logged Out" });
 };
@@ -113,7 +114,8 @@ module.exports.login_post = async (req, res) => {
       httpOnly: true,
       maxAge: 21600 * 1000,
       secure: true,
-      sameSite: "none",
+      sameSite: "lax",
+      path: "/",
     });
     res.status(201).json({ user: user.email, hasPredicted: user.hasPredicted });
   } catch (error) {
@@ -132,7 +134,8 @@ module.exports.signup_post = async (req, res) => {
       httpOnly: true,
       maxAge: 21600 * 1000,
       secure: true,
-      sameSite: "none",
+      sameSite: "lax",
+      path: "/",
     });
     res.status(201).json({ user: newUser.email });
   } catch (error) {

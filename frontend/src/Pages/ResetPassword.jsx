@@ -15,11 +15,10 @@ export default function ResetPassword() {
   });
   const navigate = useNavigate();
 
-  const url = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const verify = async () => {
       try {
-        await axios.post(`${url}/verifytoken`, { id, token });
+        await axios.post("/verifytoken", { id, token });
         setLinkValid(true);
       } catch (error) {
         setLinkValid(false);
@@ -50,7 +49,7 @@ export default function ResetPassword() {
       password: passwords.password1,
     };
     try {
-      await axios.post(`${url}/resetpassword`, apiData);
+      await axios.post("/resetpassword", apiData);
       setSubmitted(true);
     } catch (error) {
       console.log(error);
@@ -89,16 +88,14 @@ export default function ResetPassword() {
         type="password"
         placeholder="New Password"
         value={passwords.password1}
-        onChange={handleChange}
-      ></input>
+        onChange={handleChange}></input>
       <label htmlFor="password2">Confirm Password</label>
       <input
         name="password2"
         type="password"
         placeholder="Confirm Password"
         value={passwords.password2}
-        onChange={handleChange}
-      ></input>
+        onChange={handleChange}></input>
       <button type="submit">Submit</button>
       <div id="loginError">{valid ? null : <p>Passwords must match</p>}</div>
     </form>

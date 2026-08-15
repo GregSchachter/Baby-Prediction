@@ -23,7 +23,6 @@ const LoginPage = () => {
     }));
   };
 
-  const url = import.meta.env.VITE_API_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     const loginData = {
@@ -31,7 +30,7 @@ const LoginPage = () => {
       password: info.password,
     };
     try {
-      const res = await axios.post(`${url}/login`, loginData, {
+      const res = await axios.post("login", loginData, {
         withCredentials: true,
         timeout: 120000,
       });
@@ -59,16 +58,14 @@ const LoginPage = () => {
           name="email"
           placeholder="Email"
           value={info.email}
-          onChange={handleChange}
-        ></input>
+          onChange={handleChange}></input>
         <label htmlFor="password">Password:</label>
         <input
           type="password"
           name="password"
           placeholder="Password"
           value={info.password}
-          onChange={handleChange}
-        ></input>
+          onChange={handleChange}></input>
         <button type="submit">Submit</button>
         <button type="button" onClick={forgotPassBtn}>
           Forgot Password
