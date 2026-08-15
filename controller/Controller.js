@@ -109,6 +109,7 @@ module.exports.login_post = async (req, res) => {
   try {
     const user = await User.login(email, password);
     const token = createToken(user._id);
+    console.log("Setting cookie");
     res.cookie("jwt", token, {
       httpOnly: true,
       maxAge: 21600 * 1000,
