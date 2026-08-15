@@ -10,6 +10,14 @@ app.use(corsMiddleware);
 app.use(express.json());
 app.use(cookieParser());
 
+app.get("/check-cookie", (req, res) => {
+  console.log("JWT Cookie", req.cookies.jwt);
+
+  res.json({
+    hasCookie: !!req.cookies.jwt,
+  });
+});
+
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok" });
 });

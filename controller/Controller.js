@@ -34,7 +34,7 @@ module.exports.logout_get = async (req, res) => {
 
 module.exports.me_get = async (req, res) => {
   const token = req.cookies.jwt;
-  console.log("Me has jwt", !!req.cookies.jwt);
+
   if (token) {
     jwt.verify(token, secret, async (err, decodedToken) => {
       if (err) {
@@ -109,7 +109,6 @@ module.exports.login_post = async (req, res) => {
   try {
     const user = await User.login(email, password);
     const token = createToken(user._id);
-    console.log("Setting cookie");
     res.cookie("jwt", token, {
       httpOnly: true,
       maxAge: 21600 * 1000,
@@ -147,8 +146,6 @@ module.exports.predict_post = async (req, res) => {
   const { gender, date, height, pounds, ounces } = req.body;
   const token = req.cookies.jwt;
   const user = jwt.verify(token, secret).id;
-
-  console.log("predict has jwt", !!req.cookies.jwt);
 
   try {
     const newPrediction = await Prediction.create({
