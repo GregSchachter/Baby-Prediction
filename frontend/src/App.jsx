@@ -28,6 +28,8 @@ function App() {
           withCredentials: true,
         });
 
+        console.log(res.data);
+
         setAuthInfo({
           auth: res.data.auth,
           user: res.data.user || null,
