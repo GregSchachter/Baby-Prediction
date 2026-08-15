@@ -22,7 +22,7 @@ function App() {
         console.log("Server is awake");
 
         // Then check authentication
-        const res = await axios.get("/me", {
+        const res = await axios.get("/api/me", {
           withCredentials: true,
         });
 

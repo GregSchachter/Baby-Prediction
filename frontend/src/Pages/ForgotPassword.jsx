@@ -18,7 +18,7 @@ export default function ForgotPassword() {
     try {
       // Send backend response
       const res = await axios.post(
-        "/forgotpassword",
+        "/api/forgotpassword",
         { email },
         {
           withCredentials: true,

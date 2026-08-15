@@ -18,7 +18,7 @@ export default function ResetPassword() {
   useEffect(() => {
     const verify = async () => {
       try {
-        await axios.post("/verifytoken", { id, token });
+        await axios.post("/api/verifytoken", { id, token });
         setLinkValid(true);
       } catch (error) {
         setLinkValid(false);
@@ -49,7 +49,7 @@ export default function ResetPassword() {
       password: passwords.password1,
     };
     try {
-      await axios.post("/resetpassword", apiData);
+      await axios.post("/api/resetpassword", apiData);
       setSubmitted(true);
     } catch (error) {
       console.log(error);

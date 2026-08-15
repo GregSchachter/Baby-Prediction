@@ -12,7 +12,9 @@ export default function PredictionsPage() {
   useEffect(() => {
     const getPredictions = async () => {
       try {
-        const response = await axios.get("/predictions?predPage=${predPage}");
+        const response = await axios.get(
+          "/api/predictions?predPage=${predPage}",
+        );
         setPredictions(response.data.preds);
         setNextPage(response.data.hasNextPage);
       } catch (error) {

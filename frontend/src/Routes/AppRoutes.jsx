@@ -16,7 +16,7 @@ export default function AppRoutes() {
   const { authInfo, setAuthInfo } = useContext(authContext);
 
   const handleClick = async () => {
-    const res = await axios.get("/logout", {
+    const res = await axios.get("/api/logout", {
       withCredentials: true,
     });
     setAuthInfo({

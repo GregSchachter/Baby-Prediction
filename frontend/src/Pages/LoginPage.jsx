@@ -30,7 +30,7 @@ const LoginPage = () => {
       password: info.password,
     };
     try {
-      const res = await axios.post("login", loginData, {
+      const res = await axios.post("/api/login", loginData, {
         withCredentials: true,
         timeout: 120000,
       });

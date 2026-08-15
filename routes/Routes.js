@@ -3,7 +3,6 @@ const controller = require("../controller/Controller");
 
 const router = Router();
 
-router.get("/health", (req, res) => {});
 router.get("/predictions", controller.predictions_get);
 router.get("/logout", controller.logout_get);
 router.get("/me", controller.me_get);

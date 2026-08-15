@@ -35,7 +35,7 @@ const SignupPage = () => {
       lastName: info.lastName,
     };
     try {
-      const res = await axios.post("/signup", signupData, {
+      const res = await axios.post("/api/signup", signupData, {
         withCredentials: true,
         timeout: 120000,
       });

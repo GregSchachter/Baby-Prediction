@@ -32,7 +32,7 @@ export default function PredictPage() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "/predict",
+        "/api/predict",
         {
           gender: prediction.gender,
           date: prediction.date,
@@ -60,7 +60,7 @@ export default function PredictPage() {
     e.preventDefault();
     try {
       const res = await axios.patch(
-        "/predict",
+        "/api/predict",
         {
           gender: prediction.gender,
           date: prediction.date,
