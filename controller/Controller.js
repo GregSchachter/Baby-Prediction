@@ -34,6 +34,7 @@ module.exports.logout_get = async (req, res) => {
 
 module.exports.me_get = async (req, res) => {
   const token = req.cookies.jwt;
+  console.log("Me has jwt", !!req.cookies.jwt);
   if (token) {
     jwt.verify(token, secret, async (err, decodedToken) => {
       if (err) {
@@ -145,6 +146,8 @@ module.exports.predict_post = async (req, res) => {
   const { gender, date, height, pounds, ounces } = req.body;
   const token = req.cookies.jwt;
   const user = jwt.verify(token, secret).id;
+
+  console.log("predict has jwt", !!req.cookies.jwt);
 
   try {
     const newPrediction = await Prediction.create({
