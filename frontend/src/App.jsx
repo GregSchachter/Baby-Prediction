@@ -36,7 +36,7 @@ function App() {
           hasPredicted: res.data.hasPredicted || false,
         });
 
-        alert(JSON.stringify res.data)
+        alert(JSON.stringify(res.data));
       } catch (error) {
         console.log("Server health check failed:", error.message);
 
