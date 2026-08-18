@@ -91,15 +91,14 @@ module.exports.forgotPassword_post = async (req, res) => {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const frontEnd = process.env.FRONTEND_URL;
     const resetUrl = `${frontEnd}/reset-password/${user._id}/${code}`;
-    console.log("sending email");
+
     const { data, error } = await resend.emails.send({
       from: "noreply@prediction.baby",
       to: [email],
       subject: "Reset Password",
       html: `<p>Click the following link to reset your password. <br> ${resetUrl} <br> This link will expire in 15 minutes.</p>`,
     });
-    console.log("resend data", data);
-    console.log("resend error", error);
+
     if (error) throw new Error(error.message);
     res.sendStatus(200);
   } catch (error) {
