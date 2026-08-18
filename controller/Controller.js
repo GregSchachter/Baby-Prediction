@@ -92,7 +92,7 @@ module.exports.forgotPassword_post = async (req, res) => {
     const frontEnd = process.env.FRONTEND_URL;
     const resetUrl = `${frontEnd}/reset-password/${user._id}/${code}`;
     const { data, error } = await resend.emails.send({
-      from: "noreply@resend.dev",
+      from: "noreply@prediction.baby",
       to: [email],
       subject: "Reset Password",
       html: `<p>Click the following link to reset your password. <br> ${resetUrl} <br> This link will expire in 15 minutes.</p>`,
